@@ -88,5 +88,45 @@ And for more information on the actual functions in the program:
 ### sample_batch.sh
 When running these two programs, we used the FIR Supercluster. In order to pass it any code, it must be sent to the job scheduler through a batching script. FIR uses SLURM as its job scheduler, so if one were to try and replicate our results, this is a sample batching script of the one we used to pass our jobs to SLURM.
 
-## Results
-Will be updated once more results are achieved
+## Run Results
+To understand more about the limitations and applications of the code, please look at the Run Results folder. In here, we currently have 5 documents. 2 of them are focused on the limitations and runtime of the algorithms and the other 3 are examples of possible outputs you might receive.
+
+### stress_testing.txt
+This text file shows the results of running the faster Alpha_1.py algorithm for 100 generations with the following parameters:
+- population size: 100
+- order of every graph in the population: 100
+- degeneracy of every graph in the population: 2
+- size of tournament: 2
+- generations: 100
+This code took 5 hours to run. If you would like to scale up the operation, please feel free to use this estimate to do so
+
+### stress_testing_Nonforest.txt
+This text file shows the results of running the slower Alpha_d.py algorithm for 100 generations with the following parameters:
+- population size: 30
+- order of every graph in the population: 30
+- degeneracy of every graph in the population: 3
+- degeneracy of the subgraphs we are finding: 2
+- size of tournament: 2
+- generations: 100
+
+This code took 8 hours to run. If you would like to scale up the operation, please feel free to use this estimate to do so
+
+### Fifteen_Vertices_1.py and Fifteen_Vertices_3.py
+These two text files show the result of running alpha_1 with the following parameters:
+- population size: 100
+- order of every graph in the population: 15
+- degeneracy of every graph in the population: 2
+- size of tournament: 2
+- generations: the cap was 200, but both of these iterations found a graph with the bound we wanted at generation 6
+
+Please note that this shows our genetic algorithm is able to achieve our bound and replicate this result.
+
+### Fifteen_Vertices_2
+This text file shows the result of running alpha_1 with the following parameters:
+- population size: 100
+- order of every graph in the population: 15
+- degeneracy of every graph in the population: 2
+- size of tournament: 2
+- generations: 200
+
+Please note that this shows our genetic algorithm is also not perfect. The random sample of graphs in the population also matter a good amount. Thus, in the actual genetic algorithm, we have included a bit of code that can semi-reset a population if it did not reach a specific bound by a certain generation.
